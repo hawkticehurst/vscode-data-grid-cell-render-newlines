@@ -23,7 +23,7 @@ function main() {
       country: "Chile",
     },
     {
-      name: "Tasha Hess",
+      name: "Tasha Hess\n\nHere's some text that already\ncomes with newlines included!",
       email: "tasha.hess@protonmail.couk",
       phone: "(578) 194-4268",
       country: "Canada",
