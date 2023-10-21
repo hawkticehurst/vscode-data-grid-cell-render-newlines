@@ -6,6 +6,7 @@ import {
   DataGrid,
   DataGridCell,
 } from "@vscode/webview-ui-toolkit";
+import { log } from "console";
 
 provideVSCodeDesignSystem().register(vsCodeDataGrid(), vsCodeDataGridCell(), vsCodeDataGridRow());
 
@@ -144,9 +145,9 @@ function handleKeydown(e: KeyboardEvent, cell: DataGridCell) {
   } else {
     if (e.key === "Enter" && e.shiftKey) {
       // Do nothing, render newline
-    } else if (e.key === "ArrowRight" || e.key === "ArrowLeft" || e.key === "ArrowUp" || e.key === "ArrowDown") {
-      // Do nothing, let cursor move within editable text area instead of moving to the next data grid cell
-      // Todo: This does not work... the underlying FAST data-grid event listeners have higher precedents seemingly
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "ArrowUp" || e.key === "ArrowDown") {
+      // Stop event propogation so that underlying FAST data-grid arrow events are not triggered
+      e.stopPropagation();
     } else if (e.key === "Enter" || e.key === "Escape") {
       e.preventDefault();
       syncCellChanges(cell);

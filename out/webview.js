@@ -5373,7 +5373,8 @@ function handleKeydown(e, cell) {
     }
   } else {
     if (e.key === "Enter" && e.shiftKey) {
-    } else if (e.key === "ArrowRight" || e.key === "ArrowLeft" || e.key === "ArrowUp" || e.key === "ArrowDown") {
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "ArrowUp" || e.key === "ArrowDown") {
+      e.stopPropagation();
     } else if (e.key === "Enter" || e.key === "Escape") {
       e.preventDefault();
       syncCellChanges(cell);
